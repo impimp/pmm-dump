@@ -15,12 +15,14 @@ def main():
                           version="%prog 0.1")
     parser.add_option("-s", "--start",
                       action="store",
-                      default=int(time.time()-1201), 
+                      type="int",
+                      default=int(time.time()-9000), 
                       dest="startTime",
                       help="startTime",)
 
     parser.add_option("-e", "--end",
                       action="store", 
+                      type="int",
                       default=int(time.time()),
                       dest="endTime",
                       help="endTime",)
@@ -48,13 +50,15 @@ def main():
 
     options = parser.parse_args()[0]
 
-
+    print options.startTime
     if type(options.startTime) is str:
         # ...
         pass
     elif type(options.startTime) is int:
+
         startTime = int(options.startTime);
     else:
+        print type(options.startTime)
         # ...
         pass
 
