@@ -97,7 +97,7 @@ def getData(options, serie, s, e):
     while ss <= e:
         print >> sys.stderr, 'Dumping {} to {}'.format(serie, datetime.fromtimestamp(ss).strftime('%Y-%m-%d %H:%M:%S'))
 
-        response = requests.get('http://192.168.1.37/prometheus/api/v1/query?query={}[{}]&time={}'.format(serie,'10m',ss), auth=('percona','percona'))
+        response = requests.get('http://{}/prometheus/api/v1/query?query={}[{}]&time={}'.format(options.host,serie,'10m',ss), auth=(options.username,options.pasword))
         if response.status_code != 200:
           print >> sys.stderr, 'Serie: {} {} failed'.format(serie,ss)
         else:
